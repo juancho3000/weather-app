@@ -1,0 +1,44 @@
+{
+    "coord": {
+        "lon": -66.8792,
+        "lat": 10.488
+    },
+    "weather": [
+        {
+            "id": 802,
+            "main": "Clouds",
+            "description": "scattered clouds",
+            "icon": "03d"
+        }
+    ],
+    "base": "stations",
+    "main": {
+        "temp": 296.86,
+        "feels_like": 297.14,
+        "temp_min": 296.86,
+        "temp_max": 297.82,
+        "pressure": 1016,
+        "humidity": 71
+    },
+    "visibility": 10000,
+    "wind": {
+        "speed": 0.89,
+        "deg": 137,
+        "gust": 4.47
+    },
+    "clouds": {
+        "all": 40
+    },
+    "dt": 1642438034,
+    "sys": {
+        "type": 2,
+        "id": 2004667,
+        "country": "VE",
+        "sunrise": 1642416591,
+        "sunset": 1642458298
+    },
+    "timezone": -14400,
+    "id": 3646738,
+    "name": "Caracas",
+    "cod": 200
+}
