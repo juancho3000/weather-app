@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Weather from './app_component/weather.component';
+import Form from './app_component/form.component';
 
 
 //api call
@@ -37,16 +38,17 @@ class App extends React.Component{
     console.log(response);
 
       this.setState({
-        city:response.main.name,
+        city:response.name,
         country:response.sys.country,
         temp:this.calcFhrToCel(response.main.temp),
-        description:response.weather.description
+        description:response.weather[0].main.description
       });
   };
 
   render(){
     return(
       <div className='app'>
+        <Form/>
         <Weather
         city={this.state.city}
         country={this.state.country}
@@ -57,8 +59,8 @@ class App extends React.Component{
     );
   }
 }
-
-/*function App() {
+/*
+function App() {
   return (
     <div className="container">
       <div className="row">
