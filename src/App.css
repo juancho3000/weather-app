@@ -17,6 +17,7 @@ body{
 
 .cards{
   position: absolute;
+  font-size: large;
 }
 
 
@@ -64,6 +65,7 @@ font-size: large;
   font-weight: bold;
   font-size: medium;
   border: 2px;
+  cursor: pointer;
 }
 
 

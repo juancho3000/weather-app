@@ -8,8 +8,7 @@ const Weather = props =>{
        <h1>
         {props.city}, {props.country}
        </h1>
-       <h5 className="py-4">
-       </h5>
+       
        <h1 className="py-2">{props.temp}&deg;</h1>
        
        

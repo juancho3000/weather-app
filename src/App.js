@@ -41,7 +41,7 @@ class App extends React.Component{
         city:response.name,
         country:response.sys.country,
         temp:this.calcFhrToCel(response.main.temp),
-        description:response.weather[0].main.description
+        description:response.weather[0].main
       });
   };
 
@@ -53,7 +53,7 @@ class App extends React.Component{
         city={this.state.city}
         country={this.state.country}
         temp={this.state.temp}
-        decription={this.state.description}
+        description={this.state.description}
         />
       </div>
     );
