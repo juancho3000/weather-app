@@ -43,4 +43,6 @@
     "cod": 200
 }
 
-https://api.openweathermap.org/data/2.5/weather?q=caracas&appid=36f9a175d9c4096f8585a4df81f68181
+`https://api.openweathermap.org/data/2.5/weather?q=caracas&appid=36f9a175d9c4096f8585a4df81f68181`
+
+`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=36f9a175d9c4096f8585a4df81f68181`
