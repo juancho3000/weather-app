@@ -1,21 +1,9 @@
 import React from 'react';
 
-///const Form = () =>{
-    
-//const[data, setData] = useState({
-   // city:''
-//})
 
-//const handleInputChange = (event) =>{
-    //console.log(event.target.value)
-   // setData({
-       // ...data,
-       // [event.target.name] : event.target.value
-   // })
-//}
 const Form = props =>{ 
   return (
-      //<Fragment>
+     
     <div className="container">
         <form onSubmit={props.loadWeather}>
         <div>{props.error ? error(): null}</div>
@@ -27,7 +15,7 @@ const Form = props =>{
           className="form-control" 
           name="city" 
           placeholder='type city name'
-          //onChange={handleInputChange} 
+           
           autoComplete="off" />
           
         </div>

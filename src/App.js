@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import Weather from './app_component/weather.component';
 import Form from './app_component/form.component';
-//import Button from './app_component/button.component';
+
 
 
 //api call
@@ -15,12 +15,10 @@ class App extends React.Component{
       city: undefined,
       country:undefined,
       main:undefined,
-      celsius:undefined,
+      temp:undefined,
       description:"",
       error:false
     };
-    //this.getWeather();
-
   }
 
   //calculation to pass Fahrenheit to Celsius
@@ -46,7 +44,7 @@ class App extends React.Component{
 
       this.setState({
         city:`${response.name}`, 
-        //country:`${response.sys.country}`,
+        country:response.sys.country,
         temp:this.calcFhrToCel(response.main.temp),
         description:response.weather[0].main,
       });
@@ -63,12 +61,9 @@ class App extends React.Component{
     return(
       <div className="App">
         <Form loadWeather={this.getWeather} error={this.state.error}/>
-
-        {//<Button loadWeather={this.getWeather}/>}  
-          }
         <Weather
         city={this.state.city}
-        //country={this.state.country}
+        country={this.state.country}
         temp={this.state.temp}
         description={this.state.description}
         />
