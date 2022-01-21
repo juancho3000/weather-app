@@ -2,6 +2,7 @@ body{
   background-image: url('./imgs-weather/photo-1592210454359-9043f067919b.jpg');
   background-repeat: no-repeat;
   background-size: cover;
+  height: 100vh;
 }
 
 
