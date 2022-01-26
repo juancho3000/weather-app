@@ -5,13 +5,18 @@ import Form from './app_component/form.component';
 
 
 
+
+
+
 //api call
 const API_key = "36f9a175d9c4096f8585a4df81f68181";
+
 
 class App extends React.Component{
   constructor(){
     super();
     this.state={
+      loading:true,
       city: undefined,
       country:undefined,
       main:undefined,
@@ -19,7 +24,11 @@ class App extends React.Component{
       description:"",
       error:false
     };
+
+  
   }
+
+  
 
   //calculation to pass Fahrenheit to Celsius
   calcFhrToCel(temp){
@@ -27,35 +36,34 @@ class App extends React.Component{
     return cell;
   }
 
+//Getting data - beginning
   getWeather = async (e) => {
-
     e.preventDefault();
 
     const city = e.target.elements.city.value;
-    //const country =  e.target.elements.country.value;
-
-    if(city){ 
     const api_call = await fetch(
       `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_key}`
     );
     const response = await api_call.json();
-
     console.log(response);
 
+
+      if(city){ 
       this.setState({
+        
         city:`${response.name}`, 
         country:response.sys.country,
         temp:this.calcFhrToCel(response.main.temp),
         description:response.weather[0].main,
+        error:"",
       });
-
     }else{
       this.setState({
-        error: true
+        error: 'Please enter a city name that is correct or belongs to the database' 
       });
     }
-
   };
+  //getting data - finish
 
   render(){
     return(
@@ -66,11 +74,12 @@ class App extends React.Component{
         country={this.state.country}
         temp={this.state.temp}
         description={this.state.description}
-        />
-        
+        /> 
       </div>
-    ); 
-     }
-}
-
+  
+  ); 
+    } 
+    
+  }
+    
 export default App;

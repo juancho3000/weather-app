@@ -21,22 +21,25 @@ const Form = props =>{
         </div>
     </div>
 
-          <div className='row'> 
-        <div className="col-md-3">
-           <button className="btn-warning" type="submit"
-            >Get weather for your location
-            </button>
-        </div>
-        </div> 
-        </form>      
-      </div>
+   
+
+<div className='row'> 
+<div className="col-md-3">
+   <button className="btn-warning" type="submit"
+    >Get weather for your location
+    </button>
+</div>
+</div> 
+
+        </form>
+        </div>     
   );
 };
 
 function error() {
     return(
-        <div className="alert alert-danger mx5" role="alert">
-            Please enter city and country...!
+        <div className="alert-danger" type="alert">
+           Please type a city name
         </div>
     );
 };

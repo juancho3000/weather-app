@@ -72,7 +72,12 @@ font-size: large;
   cursor: pointer;
 }
 
-
+.alert-danger{
+  display: flex;
+  justify-content: center;
+  font-size: medium;
+  font-weight: 700;
+}
 
 
 
