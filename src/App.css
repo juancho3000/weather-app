@@ -20,6 +20,7 @@ body{
 .cards{
   display: flex;
   flex-direction: column;
+  text-align: center;
   align-items: center;
   font-size: large;
 }
@@ -79,6 +80,11 @@ font-size: large;
   font-weight: 700;
 }
 
+.mistake-danger{
+  width: 200px;
+  text-align: center;
+  display: flex;
+}
 
 
 

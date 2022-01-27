@@ -4,31 +4,29 @@ import Weather from './app_component/weather.component';
 import Form from './app_component/form.component';
 
 
-
-
-
-
 //api call
 const API_key = "36f9a175d9c4096f8585a4df81f68181";
+
+
 
 
 class App extends React.Component{
   constructor(){
     super();
     this.state={
-      loading:true,
+      warning:true,
       city: undefined,
       country:undefined,
       main:undefined,
       temp:undefined,
       description:"",
-      error:false
+      error:false,
+      mistake:false
     };
-
-  
+ 
   }
 
-  
+
 
   //calculation to pass Fahrenheit to Celsius
   calcFhrToCel(temp){
@@ -49,27 +47,32 @@ class App extends React.Component{
 
 
       if(city){ 
-      this.setState({
-        
+      this.setState({   
         city:`${response.name}`, 
         country:response.sys.country,
         temp:this.calcFhrToCel(response.main.temp),
         description:response.weather[0].main,
         error:"",
+        mistake:""   
       });
     }else{
       this.setState({
-        error: 'Please enter a city name that is correct or belongs to the database' 
+        error: "error",
+        mistake:"mistake" 
       });
     }
   };
+  
+  
   //getting data - finish
 
+
+  //rendering and return of API values - begin
   render(){
     return(
       <div className="App">
         <Form loadWeather={this.getWeather} error={this.state.error}/>
-        <Weather
+        <Weather showMistake={this.getWeather} mistake={this.state.mistake}
         city={this.state.city}
         country={this.state.country}
         temp={this.state.temp}
@@ -79,7 +82,8 @@ class App extends React.Component{
   
   ); 
     } 
-    
+    //rendering and return of API values - end
   }
+
     
 export default App;
