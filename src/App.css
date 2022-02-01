@@ -26,6 +26,7 @@ body{
 }
 
 
+
 .form-control{
 display: block;
 margin-left: auto;
@@ -54,6 +55,26 @@ font-size: large;
   align-items: center;
   display: flex;
   margin: auto;
+
+}
+
+.loader {
+
+ 
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite ;
+  margin: 0 auto;
+  /*visibility: hidden;
+  opacity: 0;*/
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 .btn-warning{
@@ -101,11 +122,9 @@ font-size: large;
 
 
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+@keyframes fadeOut {
+ 100%{
+   opacity:0;
+   visibility: hidden;
+ }
 }

@@ -2,7 +2,9 @@ import React from 'react';
 
 
 const Weather = props =>{
+
     return(
+
        <div className="cards">
 
          <form onSubmit={props.showMistake}> 
