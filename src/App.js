@@ -2,8 +2,10 @@ import React,{Component} from 'react';
 import './App.css';
 import Weather from './app_component/weather.component';
 import Form from './app_component/form.component';
-import PageLoader from './app_component/loading.component';
 import UsePageLoader from './app_component/passing.component';
+//import PageLoader from './app_component/loading.component';
+
+
 
 
 //api call
@@ -21,11 +23,13 @@ class App extends Component{
       main:undefined,
       temp:undefined,
       description:"",
-      error:undefined
+      error:false
       //mistake:false
     };
     
   };
+
+ 
 
 
 
@@ -42,29 +46,42 @@ class App extends Component{
 
   getWeather = async (e) => {
     e.preventDefault();
-    
-    const city = e.target.elements.city.value;
 
-    const api_call = await fetch(
-      `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_key}`
-    );
-    const response = await api_call.json();
-    console.log(response);
-    
+     this.setState({
+      loading:true
+    },async ()=>{
+      const city = e.target.elements.city.value;
 
-
-      if(city){ 
-      this.setState({   
-        city:`${response.name}`, 
-        country:response.sys.country,
-        temp:this.calcFhrToCel(response.main.temp),
-        description:response.weather[0].main,
-        error:"",
-        //loading:false
+      const api_call = await fetch(
+        `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_key}`
+      );
+      const response = await api_call.json();
+      console.log(response);
+  
      
-           
-      });
-    }
+  
+  
+        if(city){ 
+        this.setState({   
+          city:`${response.name}`, 
+          country:response.sys.country,
+          temp:this.calcFhrToCel(response.main.temp),
+          description:response.weather[0].main,
+          loading:false
+          
+       
+             
+        });
+      }else{
+        this.setState({
+          error:true,
+          loading: false
+        });
+      }
+    })
+    
+   
+    
   };
   //getting data - finish   
  
@@ -72,25 +89,27 @@ class App extends Component{
 
   //rendering and return of API values - begin
   render(){
-   
-    return(     
-      <div className="App">
-        
-        
-        <Form loadWeather={this.getWeather} error={this.state.error}/>
-        <PageLoader/>
-        <Weather 
-        city={this.state.city}
-        country={this.state.country}
-        temp={this.state.temp}
-       description={this.state.description}
-        />    
-        <UsePageLoader/>
-      </div>
+     
       
-    );
-  }
-}
+        return(     
+          <div className="App"> 
+         <Form loadWeather={this.getWeather} />  
+         <UsePageLoader loading={this.state.loading} error={this.state.error}/> 
+             <Weather 
+            city={this.state.city}
+            country={this.state.country}
+            temp={this.state.temp}
+           description={this.state.description}
+            /> 
+             
+          </div>
+          
+        );
+      
+      }
+    }
+   
+
     
   
     //rendering and return of API values - end

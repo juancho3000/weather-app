@@ -7,8 +7,7 @@ const Weather = props =>{
 
        <div className="cards">
 
-         <form onSubmit={props.showMistake}> 
-         <div>{props.mistake ? mistake(): null}</div>
+       
 
 
 
@@ -18,20 +17,14 @@ const Weather = props =>{
        <h4 className="py-3">{props.description.charAt(0).toUpperCase()+
        props.description.slice(1)}
        </h4>
-       </form>
+       
        </div>
       
    );
 
   };
 
-  function mistake() {
-      return(
-          <div className="mistake-danger" type="alert">
-             We are sorry but this name is not registered in the database, it may have been a mispelling
-          </div>
-      );
-  };
+  
     
 
 

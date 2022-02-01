@@ -7,7 +7,8 @@ const Form = props => {
 
       <div className="container">
         <form onSubmit={props.loadWeather}>
-          <div>{props.error ? error() : null}</div>
+
+         
 
           <div className="row">
             <div className="col-md-3-1">
@@ -23,7 +24,8 @@ const Form = props => {
           </div>
 
   
-
+          
+    
           
 
         </form>
@@ -31,13 +33,7 @@ const Form = props => {
     );
   }
 
-function error() {
-    return(
-        <div className="alert-danger" type="alert">
-           Please type a city name
-        </div>
-    );
-};
+
   
   
 export default Form;
