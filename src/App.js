@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 import Weather from './app_component/weather.component';
 import Form from './app_component/form.component';
 import UsePageLoader from './app_component/passing.component';
+import Background from '../src/imgs-weather/default-weather.jpg';
 import 'bootstrap/dist/css/bootstrap.min.css';  
 import './App.css';
 
@@ -58,10 +59,6 @@ class App extends Component{
       );
       const response = await api_call.json();
       console.log(response);
-  
-     
-  
-  
         if(city){ 
         this.setState({   
           city:`${response.name}`, 
@@ -70,9 +67,6 @@ class App extends Component{
           description:response.weather[0].main,
           error:"",
           loading:false
-          
-       
-             
         });
       }else{
         this.setState({
@@ -80,31 +74,39 @@ class App extends Component{
           loading: false
         });
       }
-    })
-    
-   
-    
+    })  
   };
   //getting data - finish   
- 
+
+//changing background - begin
+
+//changeing background - finish  
 
 
   //rendering and return of API values - begin
   render(){
      
       
-        return(     
-          <div className="App"> 
+        return(   
+          <div className="App" style={{
+            backgroundImage: `url(${Background})`,
+            backgroundSize: 'cover',
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'center',
+            width: '100 %',
+            height: '100vh'
+          }}> 
+
          <Form loadWeather={this.getWeather} />  
          <UsePageLoader loading={this.state.loading} error={this.state.error}/> 
-             <Weather 
-            city={this.state.city}
-            country={this.state.country}
-            temp={this.state.temp}
-           description={this.state.description}
-            /> 
-             
+         <Weather 
+          city={this.state.city}
+          country={this.state.country}
+          temp={this.state.temp}
+          description={this.state.description}
+            />  
           </div>
+        
           
         );
       
