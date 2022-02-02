@@ -1,9 +1,10 @@
 import React,{Component} from 'react';
-import './App.css';
 import Weather from './app_component/weather.component';
 import Form from './app_component/form.component';
 import UsePageLoader from './app_component/passing.component';
-//import PageLoader from './app_component/loading.component';
+import 'bootstrap/dist/css/bootstrap.min.css';  
+import './App.css';
+
 
 
 
@@ -67,6 +68,7 @@ class App extends Component{
           country:response.sys.country,
           temp:this.calcFhrToCel(response.main.temp),
           description:response.weather[0].main,
+          error:"",
           loading:false
           
        
