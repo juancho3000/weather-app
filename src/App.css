@@ -1,11 +1,11 @@
-body{
-  /* background-image: url('./imgs-weather/default-weather.jpg');*/
-   /*background-repeat: no-repeat;*/
-   /*background-size: cover;*/
-  /* height: 100vh;*/
-  /* width: 100vw;*/
- }
- 
+/*.App{
+   background-image: url('./imgs-weather/default-weather.jpg');
+   background-repeat: no-repeat;
+   background-size: cover;
+   height: 100vh;
+   width: 100vw;
+ }*/
+
 
 .container{
   display: flex;
@@ -24,6 +24,7 @@ body{
   text-align: center;
   align-items: center;
   font-size: large;
+   
 }
 
 
