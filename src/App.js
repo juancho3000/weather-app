@@ -97,21 +97,21 @@ class App extends Component{
 
  //changing background - beginning (using if else)
  backgroundChange = (temp) =>{
-   if(temp >= 5 && temp <=9){
+   if(temp >= 275 && temp <=284){
     this.setState({
       backgroundStyle:{
         backgroundImage:`url(${Cold})`
       }
     }
     );
-  }else if(temp >= 10 && temp <=19){
+  }else if(temp >= 285 && temp <=294){
     this.setState({
       backgroundStyle:{
         backgroundImage:`url(${Rain})`
       }
     }
     );
-  }else if(temp >= 20 && temp <=29){
+  }else if(temp >= 295 && temp <=304){
     this.setState({
       backgroundStyle:{
         backgroundImage:`url(${Hot})`
@@ -160,7 +160,7 @@ class App extends Component{
           loading: false
         }); 
       }
-      this.calcFhrToCel(response.main.temp);
+      this.calcFhrToCel(response.main.temp)
       this.backgroundChange(response.main.temp); 
       console.log(response.main.temp); 
       })
