@@ -2,10 +2,10 @@ import React,{Component} from 'react';
 import Weather from './app_component/weather.component';
 import Form from './app_component/form.component';
 import UsePageLoader from './app_component/passing.component';
-//import Cold from './imgs-weather/cold-weather.jpg';
-import Background from './imgs-weather/default-weather.jpg';
-//import Hot from './imgs-weather/hot-weather.jpg';
-//import Rain from './imgs-weather/rain-weather.jpg';
+import Cold from '../../weather/src/imgs-weather/cold-weather.jpg';
+import Background from '../../weather/src/imgs-weather/default-weather.jpg';
+import Hot from '../../weather/src/imgs-weather/hot-weather.jpg';
+import Rain from '../../weather/src/imgs-weather/rain-weather.jpg';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "weather-icons/css/weather-icons.css";  
 import './App.css';
@@ -13,6 +13,8 @@ import './App.css';
 //api call
 const API_key = "36f9a175d9c4096f8585a4df81f68181";
 
+
+//this.state
 class App extends Component{
   constructor(){
     super();
@@ -20,20 +22,22 @@ class App extends Component{
     this.state={
       loading:false,
       icon:undefined,
+      img:undefined,
       city: undefined,
       country:undefined,
       main:undefined,
       temp:undefined,
       description:"",
       error:false,
-      /*backgroundStyle:{
-        backgroundImage: undefined,
+
+      backgroundStyle:{
+        backgroundImage:undefined,
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
         width: '100 %',
-        height: '100vh',
-      }*/
+        height: '100vh'
+      }
       };
       this.weatherIcon = {
         Thunderstorm:"wi-thunderstorm",
@@ -45,13 +49,16 @@ class App extends Component{
         Clouds:"wi-day-fog"
       };
     }   
-   
+//this.state
+
   //calculation to pass Fahrenheit to Celsius
   calcFhrToCel(temp){
     let cell= Math.floor(temp -273.15);
     return cell;
   }
+  //calculation to pass Fahrenheit to Celsius
 
+  //icons function - beggining
   getWeatherIcon(icons, rangeid){
     switch(true){
       case rangeid >= 200 && rangeid <= 232:
@@ -85,11 +92,43 @@ class App extends Component{
         default:
           this.setState({icon: this.weatherIcon.Clouds});
     }
+  };
+//icons function - ending
+
+ //changing background - beginning (using if else)
+ backgroundChange = (temp) =>{
+   if(temp >= 5 && temp <=9){
+    this.setState({
+      backgroundStyle:{
+        backgroundImage:`url(${Cold})`
+      }
+    }
+    );
+  }else if(temp >= 10 && temp <=19){
+    this.setState({
+      backgroundStyle:{
+        backgroundImage:`url(${Rain})`
+      }
+    }
+    );
+  }else if(temp >= 20 && temp <=29){
+    this.setState({
+      backgroundStyle:{
+        backgroundImage:`url(${Hot})`
+      }
+    }
+    );
+  }else{
+    this.setState({
+      backgroundStyle:{
+        backgroundImage:`url(${Background})`
+      }
+    }
+    );
   }
- 
-  //changing background - beginning
- 
-//changeing background - finish  
+}
+
+//changeing background - finish (using if else)
 
 //Getting data - beginning
   getWeather = async (e) => {
@@ -119,29 +158,29 @@ class App extends Component{
         this.setState({
           error:true,
           loading: false
-        });
+        }); 
       }
-    }) 
-   
+      this.calcFhrToCel(response.main.temp);
+      this.backgroundChange(response.main.temp); 
+      console.log(response.main.temp); 
+      })
+       
   };
   //getting data - finish   
 
   //rendering and return of API values - beginning
-  render(){    
-  
-        return(   
-          <div className="App"
-          
-         style={{
-            backgroundImage: `url(${Background})`,
+  render(){ 
+        return(        
+          <div class="App" style={this.state.backgroundStyle} 
+          /*style={{
+            backgroundImage: `url(${Rain})`,
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center',
             width: '100 %',
             height: '100vh'
-          }} 
-           > 
-
+          }}*/
+           >
          <Form loadWeather={this.getWeather} />  
          <UsePageLoader loading={this.state.loading} error={this.state.error}/> 
          <Weather 
@@ -151,10 +190,8 @@ class App extends Component{
           description={this.state.description}
           weatherIcon={this.state.icon}
             />  
-          </div> 
-               
-        );
-      
+          </div>        
+        );     
       }
     }
     //rendering and return of API values - end
