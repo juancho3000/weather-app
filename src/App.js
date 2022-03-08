@@ -13,7 +13,6 @@ import './App.css';
 //api call
 const API_key = "36f9a175d9c4096f8585a4df81f68181";
 
-
 //this.state
 class App extends Component{
   constructor(){
@@ -105,7 +104,7 @@ class App extends Component{
       }
     }
     );
-  }else if(temp >= 285 && temp <=294){
+  }else if(temp >= 284.10 && temp <=294){
     this.setState({
       backgroundStyle:{
         ...this.state.backgroundStyle,
@@ -131,18 +130,15 @@ class App extends Component{
     );
   }
 }
-
-//changeing background - finish (using if else)
+//changeing background - ending (using if else)
 
 //Getting data - beginning
   getWeather = async (e) => {
     e.preventDefault();
-
      this.setState({
       loading:true
     },async ()=>{
       const city = e.target.elements.city.value;
-
       const api_call = await fetch(
         `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_key}`
       );
@@ -170,21 +166,12 @@ class App extends Component{
       })
        
   };
-  //getting data - finish   
+  //getting data - ending  
 
   //rendering and return of API values - beginning
   render(){ 
         return(        
-          <div class="App" style={this.state.backgroundStyle} 
-          /*style={{
-            backgroundImage: `url(${Rain})`,
-            backgroundSize: 'cover',
-            backgroundRepeat: 'no-repeat',
-            backgroundPosition: 'center',
-            width: '100 %',
-            height: '100vh'
-          }}*/
-           >
+          <div class="App" style={this.state.backgroundStyle}>
          <Form loadWeather={this.getWeather} />  
          <UsePageLoader loading={this.state.loading} error={this.state.error}/> 
          <Weather 
@@ -198,6 +185,5 @@ class App extends Component{
         );     
       }
     }
-    //rendering and return of API values - end
-      
+    //rendering and return of API values - ending
 export default App;

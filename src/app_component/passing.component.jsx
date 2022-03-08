@@ -1,12 +1,7 @@
 import React from "react";
-
-
 import PageLoader from "./loading.component";
 
 function UsePageLoader(props){
-
-
-
 if(props.loading){
     return(
         <PageLoader/>
@@ -25,7 +20,6 @@ else{
     )
  }
 }
-
 function error() {
     return(
         <div className="alert-danger" type="alert">
@@ -33,6 +27,4 @@ function error() {
         </div>
     );
 };
-
-
 export default UsePageLoader;
