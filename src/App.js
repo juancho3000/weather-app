@@ -22,7 +22,6 @@ class App extends Component{
     this.state={
       loading:false,
       icon:undefined,
-      img:undefined,
       city: undefined,
       country:undefined,
       main:undefined,
@@ -35,9 +34,10 @@ class App extends Component{
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
-        width: '100 %',
-        height: '100vh'
+        width: '100%',
+        height: '100vh',
       }
+
       };
       this.weatherIcon = {
         Thunderstorm:"wi-thunderstorm",
@@ -100,6 +100,7 @@ class App extends Component{
    if(temp >= 275 && temp <=284){
     this.setState({
       backgroundStyle:{
+        ...this.state.backgroundStyle,
         backgroundImage:`url(${Cold})`
       }
     }
@@ -107,6 +108,7 @@ class App extends Component{
   }else if(temp >= 285 && temp <=294){
     this.setState({
       backgroundStyle:{
+        ...this.state.backgroundStyle,
         backgroundImage:`url(${Rain})`
       }
     }
@@ -114,6 +116,7 @@ class App extends Component{
   }else if(temp >= 295 && temp <=304){
     this.setState({
       backgroundStyle:{
+        ...this.state.backgroundStyle,
         backgroundImage:`url(${Hot})`
       }
     }
@@ -121,6 +124,7 @@ class App extends Component{
   }else{
     this.setState({
       backgroundStyle:{
+        ...this.state.backgroundStyle,
         backgroundImage:`url(${Background})`
       }
     }
